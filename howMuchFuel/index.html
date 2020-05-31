@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор расхода топлива</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <style>
+        .center{
+            margin: auto;
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Расход топлива</h1>
+        <p>Вычисляет количество топлива за определенное расстояние при заданном потреблении и цене топлива.</p>
+        
+        <form id="calc">
+            <div class="row">
+              <div class="four columns">
+                <input class="u-full-width" type="number" placeholder="Расстояние" id="distance">
+                <label for="distance">Расстояние, которое вы собираетесь проехать на автомобиле в километрах.</label>
+              </div>
+
+              <div class="four columns">
+                
+                <input class="u-full-width" type="number" placeholder="Расход топлива на 100 км" id="consumption">
+                <label for="consumption">Расход топлива на 100 км</label>
+              </div>
+
+              <div class="four columns">
+                
+                <input class="u-full-width" type="number" placeholder="Стоимость топлива" id="price">
+                <label for="price">Стоимость топлива</label>
+              </div>
+              
+            </div>
+            
+            <input class="button-primary center" type="submit" value="Рассчитать">
+          </form>
+
+          <div class="results">
+              <p>Количество потраченного топлива <strong class="wastedFuel"></strong></p>
+              <p>Количество денег <strong class="wastedMoney"></strong></p>
+          </div>
+          
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
