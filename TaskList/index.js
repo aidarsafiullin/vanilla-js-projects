@@ -114,7 +114,7 @@ function filterTasks(e) {
 // removeTask func
 function removeTask(e) {
     if (e.target.parentElement.classList.contains('delete-item')) {
-        if (confirm('Are you sure?'))
+        if (confirm('Вы уверены?'))
             e.target.parentElement.parentElement.remove();
 
             //remove from LS
