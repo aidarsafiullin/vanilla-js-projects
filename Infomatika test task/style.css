@@ -1,0 +1,394 @@
+* {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+
+:root {
+  --params: 500px;
+  /* главная оболочка items */
+
+  --center-h: 200px;
+  /* большой круг в центре - 3*/
+  --center-w: 128px;
+  /* большой круг в центре - 3*/
+
+  --first-h: 150px;
+  /* первые два блока от центра - 2*/
+  --first-w: 97px;
+  /* первые два блока от центра - 2*/
+
+  --last-h: 90px;
+  /* вторые два блока от центра - 1*/
+  --last-w: 64px;
+  /* вторые два блока от центра - 1*/
+
+  --c1: 500px;
+  /* малый круг обводка */
+  --c2: 825px;
+  /* большой круг обводка */
+}
+
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  padding: 0px;
+  background: radial-gradient(rgb(94, 97, 153), rgb(1, 9, 26)) no-repeat;
+  color: #000;
+  overflow: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  padding-top: 40px;
+  z-index: 2;
+}
+
+.menu {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  
+}
+
+.menu a{
+  color: #ffffff;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  font-size: 22px;
+  line-height: 24px;
+  cursor: pointer;
+  padding-bottom: 5px;
+}
+
+.menu a:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s;
+}
+.menu a:hover:after {
+  transform-origin: bottom left;
+  transform: scaleX(1);
+}
+
+.team1,
+.team2 {
+  display: flex;
+  transform: rotate(180deg);
+  justify-content: end;
+  width: 54%;
+  height: 100px;
+  border-bottom: 94px solid white;
+  border-left: 52px solid transparent;
+  border-right: 25px solid transparent;
+  height: 0;
+  position: absolute;
+  top: 34%;
+  left: -10%;
+  border-radius: 15px;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.team1-inner {
+  transform: rotate(180deg);
+  text-align: right;
+  padding-right: 40px;
+  padding-bottom: 67px;
+}
+
+.team2-inner {
+  padding-left: 40px;
+  padding-top: 25px;
+}
+
+
+.team2 {
+  right: -10%;
+  left: initial;
+  transform: rotate(0deg) rotateX(1deg);
+  top: 52%;
+}
+
+.items {
+  width: var(--params);
+  height: var(--params);
+  margin: 85px auto;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.item {
+  min-width: var(--params);
+  height: var(--center);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: rotate(-30deg);
+}
+
+
+.item-outer:nth-of-type(1),
+.item-outer:nth-of-type(5) {
+  width: var(--last-w);
+  height: var(--last-h);
+}
+
+.item-outer:nth-of-type(2),
+.item-outer:nth-of-type(4) {
+  width: var(--first-w);
+  height: var(--first-h);
+}
+
+.item-outer:nth-of-type(3) {
+  width: var(--center-w);
+  height: var(--center-h);
+}
+
+.item-outer {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  z-index: 2;
+  margin: -200px;
+  background-color: white;
+  border-radius: 15px;
+  transform: rotate(30deg);
+  transition: .5s;
+}
+
+.item-outer a {
+  cursor: pointer;
+  z-index: 99;
+  color: #000;
+  text-decoration: none;
+  border: 1px solid;
+  border-radius: 7px;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.item-outer h2 {
+  margin: 10px;
+  font-size: 26px;
+}
+
+.item-outer::before,
+.item-outer::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: inherit;
+  height: inherit;
+  background-color: white;
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.item-outer::before {
+  transform: rotate(60deg);
+}
+
+.item-outer::after {
+  transform: rotate(-60deg);
+}
+
+.circle1,
+.circle2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* z-index: 100; */
+  opacity: 0.3;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  /* z-index: 1; */
+}
+
+.circle1 {
+  width: var(--c1);
+  height: var(--c1);
+}
+
+.circle2 {
+  width: var(--c2);
+  height: var(--c2);
+}
+
+@media(max-width: 500px) {
+
+  :root {
+    --params: 400px;
+    /* главная оболочка items */
+
+    --center-h: 100px;
+    /* большой круг в центре - 3*/
+    --center-w: 68px;
+    /* большой круг в центре - 3*/
+
+    --first-h: 50px;
+    /* первые два блока от центра - 2*/
+    --first-w: 40px;
+    /* первые два блока от центра - 2*/
+
+    --last-h: 30px;
+    /* вторые два блока от центра - 1*/
+    --last-w: 20px;
+    /* вторые два блока от центра - 1*/
+
+    --c1: 230px;
+    /* малый круг обводка */
+    --c2: 370px;
+    /* большой круг обводка */
+  }
+  .item-outer {
+    font-size: 10px;
+    margin: 0;
+    margin-right: 10px;
+  }
+
+  .item-outer h2 {
+    margin: 0px;
+    font-size: 14px;
+  }
+
+  .item-outer a {
+    padding: 2px;
+    text-align: center;
+  }
+
+  .team1,
+  .team2 {
+    width: 47%;
+    height: 47px;
+    transform: perspective(3px) rotate(180deg) rotateX(1deg);
+    top: 42%;
+    left: -10%;
+    font-size: 20px;
+  }
+
+  .team2 {
+    width: 47%;
+    height: 47px;
+    transform: perspective(3px) rotate(0deg) rotateX(1deg);
+    top: 51%;
+    left: 67%;
+    font-size: 20px;
+  }
+
+}
+
+@media(max-width: 400px) {
+  .item-outer {
+    font-size: 10px;
+    margin: 0;
+    margin-right: 10px;
+  }
+
+  .item-outer h2 {
+    margin: 0px;
+    font-size: 14px;
+  }
+
+  .item-outer a {
+    padding: 2px;
+    text-align: center;
+  }
+
+  .team1,
+  .team2 {
+    width: 47%;
+    height: 47px;
+    transform: perspective(3px) rotate(180deg) rotateX(1deg);
+    top: 42%;
+    left: -10%;
+    font-size: 20px;
+  }
+
+  .team2 {
+    width: 47%;
+    height: 47px;
+    transform: perspective(3px) rotate(0deg) rotateX(1deg);
+    top: 51%;
+    left: 67%;
+    font-size: 20px;
+  }
+
+  :root {
+    --params: 400px;
+    /* главная оболочка items */
+
+    --center-h: 100px;
+    /* большой круг в центре - 3*/
+    --center-w: 68px;
+    /* большой круг в центре - 3*/
+
+    --first-h: 50px;
+    /* первые два блока от центра - 2*/
+    --first-w: 40px;
+    /* первые два блока от центра - 2*/
+
+    --last-h: 30px;
+    /* вторые два блока от центра - 1*/
+    --last-w: 20px;
+    /* вторые два блока от центра - 1*/
+
+    --c1: 230px;
+    /* малый круг обводка */
+    --c2: 370px;
+    /* большой круг обводка */
+  }
+
+}
+
+@media(max-width: 300px) {
+
+  :root {
+    --params: 200px;
+    --center: 40px;
+    --first: 30px;
+    --last: 20px;
+    --c1: 60px;
+    --c2: 80px;
+  }
+
+}
+
+@media(min-width: 1600px) {
+  .team1,
+  .team2 {
+    width: 55%;
+  }
+}
